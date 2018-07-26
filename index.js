@@ -7,7 +7,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     View,
@@ -19,7 +19,7 @@ import {
 import PropTypes from 'prop-types';
 
 
-export default class CheckBox extends Component {
+export default class CheckBox extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
