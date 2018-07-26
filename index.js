@@ -131,12 +131,11 @@ export default class CheckBox extends PureComponent {
         } : {};
         return (
             <Touchable
-                style={this.props.style}
                 onPress={()=>this.onClick()}
                 disabled={this.props.disabled}
                 {...touchableProps}
             >
-                <View style={styles.container}>
+                <View style={[this.props.style, styles.container]}>
                     {this._renderLeft()}
                     {this._renderImage()}
                     {this._renderRight()}
