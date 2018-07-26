@@ -15,12 +15,16 @@ import {
     Image,
     Text,
     TouchableOpacity,
-    TouchableNativeFeedback
+    TouchableNativeFeedback,
+    Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 
 const Touchable =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
+
+const ic_check_box = require('./img/ic_check_box.png');
+const ic_check_box_outline_blank = require('./img/ic_check_box_outline_blank.png');
 
 export default class CheckBox extends PureComponent {
     constructor(props) {
@@ -113,7 +117,7 @@ export default class CheckBox extends PureComponent {
             source = require('./img/ic_indeterminate_check_box.png');
         }
         else {
-            source = this.state.isChecked ? require('./img/ic_check_box.png') : require('./img/ic_check_box_outline_blank.png');
+            source = this.state.isChecked ? ic_check_box : ic_check_box_outline_blank;
         }
 
         return (
