@@ -14,10 +14,13 @@ import {
     ViewPropTypes,
     Image,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableNativeFeedback
 } from 'react-native';
 import PropTypes from 'prop-types';
 
+const Touchable =
+    Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
 export default class CheckBox extends PureComponent {
     constructor(props) {
@@ -119,18 +122,22 @@ export default class CheckBox extends PureComponent {
     }
 
     render() {
+        const touchableProps = Platform.OS === "android" ? {
+            background: TouchableNativeFeedback.Ripple("grey"),
+        } : {};
         return (
-            <TouchableOpacity
+            <Touchable
                 style={this.props.style}
                 onPress={()=>this.onClick()}
                 disabled={this.props.disabled}
+                {...touchableProps}
             >
                 <View style={styles.container}>
                     {this._renderLeft()}
                     {this._renderImage()}
                     {this._renderRight()}
                 </View>
-            </TouchableOpacity>
+            </Touchable>
         );
     }
 }
